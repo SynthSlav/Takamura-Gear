@@ -1,5 +1,130 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
 {% block content %}
-<h2>This is the home page!</h2>
+<!-- Hero banner -->
+<section class="hero-banner"
+    style="background-image: linear-gradient(rgba(10, 15, 28, 0.7), rgba(29, 53, 87, 0.8)), url('{% static 'images/hero-image.jfif' %}');">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 px-0">
+                <div class="hero-content">
+                    <h1 class="hero-title">GEAR UP FOR VICTORY</h1>
+                    <p class="hero-subtitle">Premium MMA Equipment | Training Gear | Fight Apparel</p>
+                    <a href="" class="btn btn-hero">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Featured categories -->
+<section class="featured-categories py-5">
+    <div class="container-fluid">
+        <div class="row text-center mb-4">
+            <div class="col-12">
+                <h2 class="section-title">Shop By Category</h2>
+                <p class="section-subtitle">Explore our range of professional MMA equipment</p>
+            </div>
+        </div>
+        <div class="row g-3">
+            <!-- Gloves -->
+            <div class="col-6 col-md-3">
+                <a href="" class="category-card"
+                    style="background-image: url('{% static 'images/banner-card-gloves.jpg' %}');">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Gloves</h3>
+                        <p class="category-subtitle">Boxing, MMA, Bag gloves</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Fight Gear -->
+            <div class="col-6 col-md-3">
+                <a href="" class="category-card"
+                    style="background-image: url('{% static 'images/banner-card-gear.jpg' %}');">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Fight Gear</h3>
+                        <p class="category-subtitle">Shorts, Rashguards, Fight wear & more</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Protective Equipment -->
+            <div class="col-6 col-md-3">
+                <a href="" class="category-card"
+                    style="background-image: url('{% static 'images/banner-card-safety.jpg' %}');">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Protective Equipment</h3>
+                        <p class="category-subtitle">Headgear, Shin guards, Mouthguards & more</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Bags & Equipment -->
+            <div class="col-6 col-md-3">
+                <a href="" class="category-card"
+                    style="background-image: url('{% static 'images/banner-card-equipment.jpg' %}');">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Bags & Equipment</h3>
+                        <p class="category-subtitle">Bags, Pads, Wraps, Jump ropes & more</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Promo banners -->
+<section class="promo-banners py-5">
+    <div class="container-fluid">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="promo-banner promo-dark">
+                    <div class="promo-content">
+                        <h3>NEW ARRIVALS</h3>
+                        <p>Latest collection of premium MMA gear</p>
+                        <a href="" class="btn btn-promo">Discover More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="promo-banner promo-red">
+                    <div class="promo-content">
+                        <h3>SALE | UP TO 40% OFF</h3>
+                        <p>Limited time offer on selected items</p>
+                        <a href="" class="btn btn-promo">Shop Sale</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features section -->
+<section class="features-section py-5">
+    <div class="container-fluid">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-shipping-fast feature-icon"></i>
+                    <h4>Free Delivery</h4>
+                    <p>On orders over £50</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h4>Quality Guaranteed</h4>
+                    <p>100% authentic products</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-undo feature-icon"></i>
+                    <h4>Easy Returns</h4>
+                    <p>30-day return policy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

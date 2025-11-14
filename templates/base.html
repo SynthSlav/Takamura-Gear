@@ -1,16 +1,259 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1.0">
-    <title>Document</title>
+    {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block corecss %}
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    <title>Takamura Gear {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
-    <h1>HELLO WORLD</h1>
+    <!-- Top promotional bar -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <small><i class="fas fa-shipping-fast me-2"></i>FREE UK DELIVERY ON ORDERS OVER £50 | WORLDWIDE
+                        SHIPPING AVAILABLE</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main header -->
+    <header class="main-header">
+        <div class="container-fluid">
+            <!-- Header row -->
+            <div class="row align-items-center py-2">
+                <!-- Hamburger (mobile only) -->
+                <div class="col-2 d-lg-none">
+                    <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav">
+                        <i class="fas fa-bars fs-4 text-dark"></i>
+                    </button>
+                </div>
+                <!-- Logo -->
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'home' %}" class="logo">
+                        TAKAMURA <span>GEAR</span>
+                    </a>
+                </div>
+
+                <!-- Search bar (desktop only) -->
+                <div class="col-lg-5 d-none d-lg-block">
+                    <form method="GET" action="" class="search-form">
+                        <div class="search-bar">
+                            <input type="text" name="q" class="form-control"
+                                placeholder="Search for MMA gear, gloves, apparel...">
+                            <button type="submit" class="btn-search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Account & cart -->
+                <div class="col-4 col-lg-4">
+                    <div class="header-icons text-end">
+                        <!-- Account dropdown -->
+                        <div class="dropdown d-inline-block">
+                            <a href="#" class="header-icon" id="accountDropdown" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                                <span class="d-none d-lg-inline ms-1">Account</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                <li><a class="dropdown-item" href="">Product Management</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="">My Profile</a></li>
+                                <li><a class="dropdown-item" href="">My Orders</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="">Logout</a></li>
+                                {% else %}
+                                <li><a class="dropdown-item" href="">Register</a></li>
+                                <li><a class="dropdown-item" href="">Login</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                        <!-- Shopping cart -->
+                        <a href="" class="header-icon position-relative">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="d-none d-lg-inline ms-1">
+                                {% if grand_total %}
+                                £{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                £0.00
+                                {% endif %}
+                            </span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search bar (mobile only) -->
+            <div class="row d-lg-none pb-2">
+                <div class="col-12">
+                    <form method="GET" action="" class="search-form">
+                        <div class="search-bar">
+                            <input type="text" name="q" class="form-control" placeholder="Search products...">
+                            <button type="submit" class="btn-search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main navigation -->
+    <nav class="navbar navbar-expand-lg main-nav">
+        <div class="container-fluid">
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            All Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="allProductsDropdown">
+                            <li><a class="dropdown-item" href="">By Price</a></li>
+                            <li><a class="dropdown-item" href="">By Rating</a></li>
+                            <li><a class="dropdown-item" href="">All Products</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Training Gloves</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Fight Gear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Protective Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Apparel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="">Sale</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Django messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
+    <!-- Footer -->
+    <footer class="main-footer mt-5">
+        <div class="container-fluid py-5">
+            <div class="row">
+                <!-- About column -->
+                <div class="col-md-6 mb-4">
+                    <h5 class="footer-heading">Takamura Gear</h5>
+                    <p class="footer-text">Your premium destination for authentic MMA equipment and training gear.
+                        Quality guaranteed.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Newsletter -->
+                <div class="col-md-6 mb-4">
+                    <h5 class="footer-heading">Newsletter</h5>
+                    <p class="footer-text">Subscribe for exclusive deals and updates!</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-subscribe" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Bottom footer -->
+            <div class="row mt-4 pt-4 border-top">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="footer-text mb-0">&copy; 2025 Takamura Gear. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <i class="fab fa-cc-visa payment-icon"></i>
+                    <i class="fab fa-cc-mastercard payment-icon"></i>
+                    <i class="fab fa-cc-paypal payment-icon"></i>
+                    <i class="fab fa-cc-apple-pay payment-icon"></i>
+                    <i class="fab fa-google-pay payment-icon"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% block corejs %}
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>

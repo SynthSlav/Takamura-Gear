@@ -1,0 +1,482 @@
+[
+  {
+    "pk": 1,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1001",
+      "name": "Takamura Elite Boxing Gloves",
+      "description": "Premium synthetic leather boxing gloves featuring triple-layer foam padding for superior shock absorption. Reinforced wrist support provides stability during intensive training. Breathable mesh palm prevents moisture buildup. Ideal for heavy bag work, pad training, and controlled sparring sessions. Suitable for intermediate to advanced practitioners.",
+      "price": "79.99",
+      "category": 1,
+      "rating": "4.6",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed",
+      "image": ""
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1002",
+      "name": "Takamura Pro Boxing Gloves",
+      "description": "Mid-weight training gloves designed for versatile workout routines. Quality synthetic construction with dual-layer foam protection. Ergonomic thumb design reduces injury risk. Perfect for bag work and general training sessions. Adjustable wrist strap ensures secure fit.",
+      "price": "74.99",
+      "category": 1,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+      "image": ""
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1003",
+      "name": "Takamura Beginner Boxing Gloves",
+      "description": "Entry-level boxing gloves perfect for newcomers to the sport. Durable synthetic leather construction offers excellent value. Standard foam padding provides adequate protection for basic training. Lightweight design reduces arm fatigue during extended sessions. Great starter option for fitness boxing.",
+      "price": "49.99",
+      "category": 1,
+      "rating": "4.3",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1586888111775-e0c0c7024e6e",
+      "image": ""
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1004",
+      "name": "Takamura MMA Training Gloves",
+      "description": "Open-finger MMA gloves designed for mixed martial arts training. Premium leather construction with reinforced stitching at stress points. Padded knuckle protection while maintaining dexterity for grappling. Secure wrist closure with hook and loop fastener. Suitable for striking and submission practice.",
+      "price": "54.99",
+      "category": 1,
+      "rating": "4.7",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e",
+      "image": ""
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1005",
+      "name": "Takamura Sparring Gloves",
+      "description": "Extra-padded sparring gloves engineered for partner training safety. Four-layer foam system absorbs impact effectively. Extended cuff design provides additional wrist support. Soft outer material reduces surface trauma during contact. Essential equipment for controlled sparring practice.",
+      "price": "84.99",
+      "category": 1,
+      "rating": "4.8",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05",
+      "image": ""
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1006",
+      "name": "Takamura Heavy Bag Gloves",
+      "description": "Specialized gloves designed exclusively for heavy bag training. Reinforced knuckle padding withstands repeated impact. Compact design allows for proper fist formation. Durable synthetic exterior resists wear from bag friction. Quick-wrap closure system for easy on and off.",
+      "price": "44.99",
+      "category": 1,
+      "rating": "4.4",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1",
+      "image": ""
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1007",
+      "name": "Takamura Youth Boxing Gloves",
+      "description": "Specially sized boxing gloves for young athletes and beginners. Lightweight construction reduces fatigue for developing muscles. Safety-focused padding protects growing hands. Bright color options encourage youth participation. Adjustable wrist strap accommodates different hand sizes.",
+      "price": "39.99",
+      "category": 1,
+      "rating": "4.6",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1563513914454-033db7cc5edd",
+      "image": ""
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg1008",
+      "name": "Takamura Competition MMA Gloves",
+      "description": "Official competition-spec MMA gloves meeting regulatory standards. Four-ounce open-finger design allows full hand mobility. Premium leather with reinforced stitching ensures durability. Anatomical padding protects knuckles without restricting movement. Secure wrist wrap provides stability during fights.",
+      "price": "64.99",
+      "category": 1,
+      "rating": "4.7",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1610442287084-5a2de0316ca7",
+      "image": ""
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2001",
+      "name": "Takamura Fight Shorts Black/Red",
+      "description": "Classic MMA fight shorts in signature Takamura colors. Lightweight polyester construction allows unrestricted movement. Side splits enable high kicks and ground techniques. Reinforced stitching at stress points ensures longevity. Elastic waistband with drawstring provides secure fit during intense training.",
+      "price": "34.99",
+      "category": 2,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1560026304-3e0bb11e23c0",
+      "image": ""
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2002",
+      "name": "Takamura Fight Shorts Navy/White",
+      "description": "Alternative colorway of our popular fight shorts design. Premium polyester fabric wicks moisture during training. Deep side slits facilitate full range of motion. Sublimated graphics resist fading and peeling. Traditional Velcro closure with internal drawstring for added security.",
+      "price": "34.99",
+      "category": 2,
+      "rating": "4.6",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1556906918-96e9111c41a4",
+      "image": ""
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2003",
+      "name": "Takamura Compression Shorts",
+      "description": "Base layer compression shorts designed for optimal muscle support. Four-way stretch fabric moves with your body. Moisture-wicking technology keeps you dry during intense sessions. Flatlock seams prevent chafing and irritation. Ideal worn alone or under fight shorts.",
+      "price": "29.99",
+      "category": 2,
+      "rating": "4.4",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1556906918-96e9111c41a4",
+      "image": ""
+    }
+  },
+  {
+    "pk": 12,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2004",
+      "name": "Takamura Rashguard Long Sleeve",
+      "description": "Premium long-sleeve rashguard provides comprehensive mat protection. Antimicrobial fabric prevents bacteria growth and odor. Reinforced flatlock stitching withstands grappling stress. Compression fit supports muscles and enhances blood flow. Sublimated design ensures graphics never fade or crack.",
+      "price": "39.99",
+      "category": 2,
+      "rating": "4.7",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f",
+      "image": ""
+    }
+  },
+  {
+    "pk": 13,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2005",
+      "name": "Takamura Rashguard Short Sleeve",
+      "description": "Short-sleeve rashguard perfect for warmer training environments. Quick-dry polyester spandex blend regulates temperature. Full range of motion for striking and grappling. Durable construction maintains shape after repeated washing. Essential gear for no-gi BJJ and MMA training.",
+      "price": "34.99",
+      "category": 2,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f",
+      "image": ""
+    }
+  },
+  {
+    "pk": 14,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2006",
+      "name": "Takamura BJJ Gi White",
+      "description": "Traditional Brazilian Jiu-Jitsu gi crafted from pearl weave cotton. IBJJF competition legal construction and sizing. Reinforced stress points at knees, lapel, and armpits. Pre-shrunk fabric minimizes size changes after washing. Includes matching belt loops and drawstring pants.",
+      "price": "119.99",
+      "category": 2,
+      "rating": "4.8",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1555597408-26bc8e548a46",
+      "image": ""
+    }
+  },
+  {
+    "pk": 15,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2007",
+      "name": "Takamura BJJ Gi Blue",
+      "description": "Premium blue gi meeting international competition standards. Durable pearl weave jacket with traditional cut. Ripstop cotton pants resist tears during rolling. Reinforced triple stitching at all seams. Color-fast fabric maintains appearance through countless training sessions.",
+      "price": "119.99",
+      "category": 2,
+      "rating": "4.7",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1555597408-26bc8e548a46",
+      "image": ""
+    }
+  },
+  {
+    "pk": 16,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg2008",
+      "name": "Takamura Training T-Shirt",
+      "description": "Casual training t-shirt featuring Takamura Gear branding. Comfortable cotton-polyester blend balances breathability and durability. Classic fit suitable for gym sessions or casual wear. Reinforced neck and shoulder seams resist stretching. Available in multiple sizes to fit all athletes.",
+      "price": "24.99",
+      "category": 2,
+      "rating": "4.3",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+      "image": ""
+    }
+  },
+  {
+    "pk": 17,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3001",
+      "name": "Takamura Pro Headguard",
+      "description": "Full-face protection headguard for intensive sparring sessions. Multi-layer foam padding absorbs impacts from all angles. Cheek and jaw protection while maintaining visibility. Adjustable rear lacing system ensures custom fit. Durable synthetic leather withstands regular training use.",
+      "price": "64.99",
+      "category": 3,
+      "rating": "4.6",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed",
+      "image": ""
+    }
+  },
+  {
+    "pk": 18,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3002",
+      "name": "Takamura Open Face Headguard",
+      "description": "Open-face design maximizes peripheral vision during sparring. Comprehensive ear and temple protection. Lightweight construction reduces neck strain. Quick-adjust hook and loop closure for easy sizing. Ideal for boxers who prioritize visibility and mobility.",
+      "price": "54.99",
+      "category": 3,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed",
+      "image": ""
+    }
+  },
+  {
+    "pk": 19,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3003",
+      "name": "Takamura Shin Guards",
+      "description": "Comprehensive shin and instep protection for kickboxing and Muay Thai. Dense foam padding shields against powerful strikes. Extended coverage protects entire shin bone. Secure hook and loop straps prevent shifting during movement. Ergonomic design allows natural leg mobility.",
+      "price": "44.99",
+      "category": 3,
+      "rating": "4.7",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1606115915090-be18fea23ec7",
+      "image": ""
+    }
+  },
+  {
+    "pk": 20,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3004",
+      "name": "Takamura Instep Guards",
+      "description": "Lightweight foot protection for striking practice. Focused padding over instep and toes. Elastic straps secure guards without restricting ankle movement. Thin profile fits comfortably inside training shoes. Essential gear for point-sparring and light contact drills.",
+      "price": "29.99",
+      "category": 3,
+      "rating": "4.4",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1606115915090-be18fea23ec7",
+      "image": ""
+    }
+  },
+  {
+    "pk": 21,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3005",
+      "name": "Takamura Mouthguard Single",
+      "description": "Boil-and-bite mouthguard provides custom fit protection. Covers upper teeth to prevent dental injuries. Food-grade EVA material molds to individual tooth structure. Breathing channels allow normal respiration during exertion. Essential safety equipment for all contact sports.",
+      "price": "12.99",
+      "category": 3,
+      "rating": "4.3",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1587912781940-1da0f9dc0b70",
+      "image": ""
+    }
+  },
+  {
+    "pk": 22,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3006",
+      "name": "Takamura Mouthguard Double",
+      "description": "Advanced dual-layer mouthguard protecting both upper and lower teeth. Enhanced shock absorption through multi-density construction. Custom moldable fit ensures comfort and retention. Integrated breathing channels maintain airflow. Recommended for high-impact sparring and competition.",
+      "price": "19.99",
+      "category": 3,
+      "rating": "4.6",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1587912781940-1da0f9dc0b70",
+      "image": ""
+    }
+  },
+  {
+    "pk": 23,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3007",
+      "name": "Takamura Groin Guard",
+      "description": "Essential protective equipment featuring traditional Thai steel cup design. Ergonomic cup shape provides comprehensive protection. Secure waistband and leg straps prevent movement during action. Moisture-wicking liner enhances comfort. Mandatory safety gear for all striking arts.",
+      "price": "34.99",
+      "category": 3,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1598289431512-b97b0917affc",
+      "image": ""
+    }
+  },
+  {
+    "pk": 24,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg3008",
+      "name": "Takamura Elbow Pads Pair",
+      "description": "Joint protection designed for ground training and wrestling. Dense foam padding shields elbows from mat burns and impacts. Elastic sleeve design stays in place without restrictive straps. Thin profile maintains natural arm mobility. Sold as matched pair for complete protection.",
+      "price": "24.99",
+      "category": 3,
+      "rating": "4.4",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1598289431512-b97b0917affc",
+      "image": ""
+    }
+  },
+  {
+    "pk": 25,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4001",
+      "name": "Takamura Heavy Bag 4ft",
+      "description": "Four-foot heavy bag perfect for boxing and striking combinations. Pre-filled with textile fibers for consistent density. Durable canvas exterior withstands repeated impacts. Heavy-duty D-ring and chains for secure hanging. Ideal for developing punching power and technique.",
+      "price": "89.99",
+      "category": 4,
+      "rating": "4.6",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+      "image": ""
+    }
+  },
+  {
+    "pk": 26,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4002",
+      "name": "Takamura Heavy Bag 5ft",
+      "description": "Extended five-foot heavy bag accommodates kicks and knee strikes. High-density filling maintains shape through intensive use. Reinforced stitching at top and bottom caps. Professional-grade suspension system included. Essential equipment for Muay Thai and MMA training facilities.",
+      "price": "109.99",
+      "category": 4,
+      "rating": "4.7",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+      "image": ""
+    }
+  },
+  {
+    "pk": 27,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4003",
+      "name": "Takamura Focus Mitts Pair",
+      "description": "Curved focus mitts designed for precision striking drills. Dense padding absorbs impact while providing clear target. Secure hand compartment with adjustable wrist strap. Leather construction ensures durability. Essential training tool for coaches and partners working on accuracy.",
+      "price": "39.99",
+      "category": 4,
+      "rating": "4.5",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e",
+      "image": ""
+    }
+  },
+  {
+    "pk": 28,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4004",
+      "name": "Takamura Thai Pads Pair",
+      "description": "Traditional Thai pads for practicing kicks, knees, and elbow strikes. Extended forearm padding protects holder during powerful techniques. Curved design naturally deflects strike energy. Double-strap system distributes impact force. Standard equipment for authentic Muay Thai training.",
+      "price": "54.99",
+      "category": 4,
+      "rating": "4.8",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e",
+      "image": ""
+    }
+  },
+  {
+    "pk": 29,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4005",
+      "name": "Takamura Hand Wraps 4.5m",
+      "description": "Classic cotton hand wraps provide essential wrist and knuckle support. Standard 4.5-meter length accommodates various wrapping techniques. Thumb loop ensures proper positioning. Hook and loop closure secures wrap during training. Washable material maintains hygiene through repeated use.",
+      "price": "9.99",
+      "category": 4,
+      "rating": "4.4",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05",
+      "image": ""
+    }
+  },
+  {
+    "pk": 30,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4006",
+      "name": "Takamura Hand Wraps Gel Padded",
+      "description": "Advanced quick-wrap design with integrated gel knuckle protection. Eliminates traditional wrapping while providing superior padding. Adjustable wrist strap ensures secure fit. Machine washable for easy maintenance. Convenient option for time-saving hand protection.",
+      "price": "14.99",
+      "category": 4,
+      "rating": "4.5",
+      "has_sizes": true,
+      "image_url": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05",
+      "image": ""
+    }
+  },
+  {
+    "pk": 31,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4007",
+      "name": "Takamura Speed Ball",
+      "description": "Traditional speed ball for developing hand-eye coordination and rhythm. Durable leather construction maintains shape and rebound. Adjustable swivel allows height customization. Bladder replacement system extends product lifespan. Classic training tool for boxers at all levels.",
+      "price": "29.99",
+      "category": 4,
+      "rating": "4.3",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+      "image": ""
+    }
+  },
+  {
+    "pk": 32,
+    "model": "products.product",
+    "fields": {
+      "sku": "tg4008",
+      "name": "Takamura Jump Rope",
+      "description": "Adjustable jump rope for cardiovascular conditioning and footwork training. Durable PVC-coated cable resists kinking. Comfortable foam handles reduce hand fatigue. Length adjustment allows customization to user height. Essential warm-up and conditioning tool for all combat athletes.",
+      "price": "12.99",
+      "category": 4,
+      "rating": "4.4",
+      "has_sizes": false,
+      "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+      "image": ""
+    }
+  }
+]

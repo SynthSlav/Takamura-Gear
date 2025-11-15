@@ -1,0 +1,34 @@
+[
+  {
+    "pk": 1,
+    "model": "products.category",
+    "fields": {
+      "name": "gloves",
+      "friendly_name": "Gloves"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.category",
+    "fields": {
+      "name": "fight_gear",
+      "friendly_name": "Fight Gear"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.category",
+    "fields": {
+      "name": "protective_equipment",
+      "friendly_name": "Protective Equipment"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.category",
+    "fields": {
+      "name": "bags_equipment",
+      "friendly_name": "Bags & Equipment"
+    }
+  }
+]

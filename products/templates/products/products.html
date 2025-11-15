@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1>All Products</h1>
+            <p class="text-muted">{{ products|length }} Products Available</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

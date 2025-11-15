@@ -10,6 +10,20 @@
             <p class="text-muted">{{ products|length }} Products Available</p>
         </div>
     </div>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="text-muted">£{{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-dark">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}

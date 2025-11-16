@@ -108,16 +108,20 @@
                         </div>
 
                         <!-- Shopping cart -->
-                        <a href="" class="header-icon position-relative">
+                        <a href="{% url 'view_cart' %}" class="header-icon position-relative">
                             <i class="fas fa-shopping-bag"></i>
                             <span class="d-none d-lg-inline ms-1">
-                                {% if grand_total %}
-                                £{{ grand_total|floatformat:2 }}
+                                {% if total %}
+                                £{{ total|floatformat:2 }}
                                 {% else %}
                                 £0.00
                                 {% endif %}
                             </span>
+                            {% if product_count > 0 %}
+                            <span class="cart-count">{{ product_count }}</span>
+                            {% else %}
                             <span class="cart-count">0</span>
+                            {% endif %}
                         </a>
                     </div>
                 </div>

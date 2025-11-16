@@ -28,7 +28,68 @@
 
             <h3 class="text-danger mb-4">£{{ product.price }}</h3>
 
-            <p>{{ product.description }}</p>
+            <!-- Description Section -->
+            <h5>Product Description</h5>
+            <p class="mb-4">{{ product.description }}</p>
+
+            <hr class="my-4">
+
+            <!-- Size Selector -->
+            {% if product.has_sizes %}
+            <form method="POST" action="">
+                {% csrf_token %}
+
+                {% if product.category.name == 'gloves' %}
+                <!-- Gloves get OZ dropdown -->
+                <div class="mb-3">
+                    <label for="product_size" class="form-label fw-bold">Select Weight:</label>
+                    <select name="product_size" id="product_size" class="form-select" required>
+                        <option value="">Choose weight...</option>
+                        <option value="8oz">8oz</option>
+                        <option value="10oz">10oz</option>
+                        <option value="12oz">12oz</option>
+                        <option value="14oz">14oz</option>
+                        <option value="16oz">16oz</option>
+                    </select>
+                </div>
+                {% else %}
+                <!-- Everything else gets regular sizes -->
+                <div class="mb-3">
+                    <label for="product_size" class="form-label fw-bold">Select Size:</label>
+                    <select name="product_size" id="product_size" class="form-select" required>
+                        <option value="">Choose size...</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+                {% endif %}
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label fw-bold">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="99">
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-lg w-100">
+                    <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                </button>
+            </form>
+            {% else %}
+            <!-- No sizes condition -->
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="quantity" class="form-label fw-bold">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="99">
+                </div>
+                <button type="submit" class="btn btn-danger btn-lg w-100">
+                    <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                </button>
+            </form>
+            {% endif %}
         </div>
     </div>
 </div>

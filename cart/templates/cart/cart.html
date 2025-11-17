@@ -111,8 +111,8 @@
                     </div>
 
                     {% if free_delivery_delta > 0 %}
-                    <div class="alert alert-info mt-3 mb-3 py-2">
-                        <small>
+                    <div class="bg-info bg-opacity-10 border border-info rounded p-2 mt-3 mb-3">
+                        <small class="text-info">
                             <i class="fas fa-info-circle"></i>
                             Spend <strong>£{{ free_delivery_delta|floatformat:2 }}</strong> more for free delivery!
                         </small>

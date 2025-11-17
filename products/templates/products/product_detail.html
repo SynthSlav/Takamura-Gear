@@ -70,7 +70,16 @@
 
                 <div class="mb-3">
                     <label for="quantity" class="form-label fw-bold">Quantity:</label>
-                    <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="99">
+                    <div class="input-group" style="max-width: 150px;">
+                        <button class="btn btn-outline-secondary" type="button" id="decrement-qty">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" name="quantity" id="quantity" class="form-control text-center" value="1"
+                            min="1" max="99" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="increment-qty">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
@@ -95,4 +104,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/product_detail.js' %}"></script>
 {% endblock %}

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
     <div class="row">
@@ -21,8 +25,8 @@
                         <div class="col-4 col-md-3">
                             <a href="{% url 'product_detail' item.product.id %}">
                                 {% if item.product.image_url %}
-                                <img src="{{ item.product.image_url }}" class="img-fluid rounded"
-                                    alt="{{ item.product.name }}" style="max-height: 120px; object-fit: cover;">
+                                <img src="{{ item.product.image_url }}" class="img-fluid rounded cart-item-img"
+                                    alt="{{ item.product.name }}">
                                 {% else %}
                                 <img src="https://via.placeholder.com/120x120?text=No+Image" class="img-fluid rounded"
                                     alt="No image">
@@ -64,7 +68,7 @@
                                 <form method="POST" action="{% url 'update_cart' item.item_id %}"
                                     class="update-form d-flex align-items-center">
                                     {% csrf_token %}
-                                    <div class="input-group input-group-sm" style="max-width: 130px;">
+                                    <div class="input-group input-group-sm cart-qty-group">
                                         <button class="btn btn-outline-secondary decrement-qty" type="button"
                                             data-item_id="{{ item.item_id }}">
                                             <i class="fas fa-minus fa-sm"></i>

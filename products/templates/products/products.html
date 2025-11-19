@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid py-5">
     <div class="row">
@@ -67,7 +71,7 @@
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <p class="mb-0 text-muted">{{ products|length }} Products</p>
-                    <select class="form-select form-select-sm" style="width: auto;">
+                    <select class="form-select form-select-sm sort-select">
                         <option>Sort by: Featured</option>
                         <option>Price: Low to High</option>
                         <option>Price: High to Low</option>
@@ -82,8 +86,8 @@
                     <div class="card border-0 h-100">
                         <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
                             {% if product.image_url %}
-                            <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}"
-                                style="aspect-ratio: 1/1; object-fit: cover;">
+                            <img src="{{ product.image_url }}" class="card-img-top product-card-img"
+                                alt="{{ product.name }}">
                             {% else %}
                             <img src="https://via.placeholder.com/400x400?text=No+Image" class="card-img-top"
                                 alt="No image" style="aspect-ratio: 1/1; object-fit: cover;">
@@ -91,7 +95,7 @@
                         </a>
 
                         <div class="card-body text-center px-2">
-                            <h6 class="card-title text-dark mb-2" style="font-size: 0.85rem; min-height: 2.5rem;">
+                            <h6 class="card-title text-dark mb-2 product-card-title">
                                 <a href="{% url 'product_detail' product.id %}" class="text-dark text-decoration-none">
                                     {{ product.name|upper }}
                                 </a>

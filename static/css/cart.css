@@ -1,0 +1,8 @@
+.cart-item-img {
+    max-height: 120px;
+    object-fit: cover;
+}
+
+.cart-qty-group {
+    max-width: 130px;
+}

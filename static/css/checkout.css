@@ -1,0 +1,22 @@
+.checkout-container {
+    max-width: 1200px;
+}
+
+.product-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.order-summary-box {
+    background-color: #f8f9fa;
+}
+
+.checkout-btn {
+    height: 55px;
+}
+
+#card-element {
+    height: 50px;
+    padding-top: 15px;
+}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4 checkout-container">
+    <div class="row">
+        <!-- Left Column - Form -->
+        <div class="col-lg-7 mb-4">
+            <form method="POST" id="payment-form">
+                {% csrf_token %}
+
+                <!-- Contact Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-3">Contact</h5>
+                    {{ order_form.email }}
+                </div>
+
+                <!-- Delivery Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-3">Delivery</h5>
+
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            {{ order_form.full_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ order_form.phone_number }}
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        {{ order_form.street_address1 }}
+                    </div>
+
+                    <div class="mt-2">
+                        {{ order_form.street_address2 }}
+                    </div>
+
+                    <div class="row g-2 mt-2">
+                        <div class="col-md-6">
+                            {{ order_form.town_or_city }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ order_form.postcode }}
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mt-2">
+                        <div class="col-md-6">
+                            {{ order_form.county }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ order_form.country }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-3">Payment</h5>
+                    <div class="border rounded p-3 bg-light text-muted">
+                        <small><i class="fas fa-lock me-2"></i>All transactions are secure and encrypted</small>
+                    </div>
+                    <div id="card-element" class="form-control mt-3">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                </div>
+
+                <!-- Pay Now Button -->
+                <button type="submit" class="btn btn-danger btn-lg w-100 mb-3 checkout-btn">
+                    <i class="fas fa-lock me-2"></i>Pay Now
+                </button>
+
+                <div class="text-center">
+                    <a href="{% url 'view_cart' %}" class="text-decoration-none text-muted">
+                        <i class="fas fa-chevron-left me-1"></i>Return to cart
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right Column - Order Summary -->
+        <div class="col-lg-5">
+            <div class="border rounded p-4 order-summary-box">
+                <!-- Cart Items Preview -->
+                <div class="mb-4">
+                    {% for item in cart_items %}
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="position-relative me-3">
+                            {% if item.product.image_url %}
+                            <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}"
+                                class="rounded border product-thumbnail">
+                            {% else %}
+                            <img src="https://via.placeholder.com/60" alt="No image"
+                                class="rounded border product-thumbnail">
+                            {% endif %}
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+                                {{ item.quantity }}
+                            </span>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="mb-0 small">{{ item.product.name }}</p>
+                            {% if item.size %}
+                            <p class="mb-0 text-muted small">Size: {{ item.size|upper }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold">£{{ item.product.price|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <!-- Totals -->
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>£{{ total|floatformat:2 }}</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Shipping</span>
+                    <span>£{{ delivery|floatformat:2 }}</span>
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between">
+                    <span class="fw-bold fs-5">Total</span>
+                    <span class="fw-bold fs-5">GBP £{{ grand_total|floatformat:2 }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

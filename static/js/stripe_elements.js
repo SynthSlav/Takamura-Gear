@@ -21,7 +21,10 @@ var style = {
     }
 };
 
-var card = elements.create('card', { style: style });
+var card = elements.create('card', {
+    style: style,
+    hidePostalCode: true
+});
 card.mount('#card-element');
 
 // Show card errors as user types

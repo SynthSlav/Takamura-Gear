@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from .forms import OrderForm
 from django.conf import settings
-from .models import OrderLineItem
+from .models import OrderLineItem, Order
 from products.models import Product
 from cart.contexts import cart_contents
 import stripe
@@ -34,7 +34,11 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            order.delivery_cost = 0
+            order.order_total = 0
+            order.grand_total = 0
+            order.save()
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)

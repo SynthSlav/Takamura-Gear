@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from decimal import Decimal
 
 if os.path.isfile("env.py"):
     import env
@@ -132,7 +133,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Cart settings
 FREE_DELIVERY_THRESHOLD = 99
-STANDARD_DELIVERY_COST = 5.99
+STANDARD_DELIVERY_COST = Decimal("5.99")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

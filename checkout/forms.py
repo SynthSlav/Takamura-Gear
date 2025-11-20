@@ -33,18 +33,20 @@ class OrderForm(forms.ModelForm):
             "town_or_city": "Town or City",
             "county": "County, State or Locality",
             "postcode": "Postal Code",
-            "country": "Country",
         }
 
         self.fields["full_name"].widget.attrs["autofocus"] = True
 
         for field in self.fields:
-            # Add asterisk to required fields
-            if self.fields[field].required:
-                placeholder = f"{placeholders[field]} *"
-            else:
-                placeholder = placeholders[field]
+            if field != "country":
+                # Add asterisk to required fields
+                if self.fields[field].required:
+                    placeholder = f"{placeholders[field]} *"
+                else:
+                    placeholder = placeholders[field]
 
-            self.fields[field].widget.attrs["placeholder"] = placeholder
-            self.fields[field].widget.attrs["class"] = "form-control"
-            self.fields[field].label = False  # Using placeholders instead
+                self.fields[field].widget.attrs["placeholder"] = placeholder
+                self.fields[field].widget.attrs["class"] = "form-control"
+                self.fields[field].label = False  # Using placeholders instead
+
+        self.fields["country"].widget.attrs["class"] = "form-control"

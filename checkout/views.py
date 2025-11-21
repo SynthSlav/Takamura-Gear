@@ -6,6 +6,7 @@ from .models import OrderLineItem, Order
 from products.models import Product
 from cart.contexts import cart_contents
 import stripe
+from profiles.models import UserProfile
 
 # Create your views here.
 
@@ -35,6 +36,10 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            # Link to user profile if logged in
+            if request.user.is_authenticated:
+                profile = UserProfile.objects.get(user=request.user)
+                order.user_profile = profile
             order.delivery_cost = 0
             order.order_total = 0
             order.grand_total = 0

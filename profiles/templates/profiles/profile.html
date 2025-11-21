@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">My Profile</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Profile Form -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Default Delivery Information</h5>
+                    <form method="POST" id="profile-update-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-danger w-100">Update Information</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order History -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Order History</h5>
+                    {% if orders %}
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'checkout_success' order.order_number %}"
+                                            class="text-decoration-none">
+                                            {{ order.order_number|truncatechars:10 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date|date:"d M Y" }}</td>
+                                    <td>
+                                        {% for item in order.lineitems.all %}
+                                        {{ item.product.name }} x {{ item.quantity }}<br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>£{{ order.grand_total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">You haven't placed any orders yet.</p>
+                    <a href="{% url 'products' %}" class="btn btn-outline-danger">Start Shopping</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

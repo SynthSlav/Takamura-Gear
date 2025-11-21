@@ -1,0 +1,92 @@
+{% extends "allauth/auth_base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block inner_content %}
+
+<h1>{% trans "Sign Up" %}</h1>
+<p class="lead">Create your Takamura Gear account</p>
+
+<p class="text-muted">Already have an account? <a href="{% url 'account_login' %}"><strong>Sign in here</strong></a></p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <div class="mb-3">
+        <label for="id_username">{{ form.username.label }}</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+        <ul class="errorlist">
+            {% for error in form.username.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <small class="text-muted">Required. 4-150 characters. Letters, digits and @/./+/-/_ only.</small>
+    </div>
+
+    <div class="mb-3">
+        <label for="id_email">{{ form.email.label }}</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+        <ul class="errorlist">
+            {% for error in form.email.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    {% if form.email2 %}
+    <div class="mb-3">
+        <label for="id_email2">{{ form.email2.label }}</label>
+        {{ form.email2 }}
+        {% if form.email2.errors %}
+        <ul class="errorlist">
+            {% for error in form.email2.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="mb-3">
+        <label for="id_password1">{{ form.password1.label }}</label>
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+        <ul class="errorlist">
+            {% for error in form.password1.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_password2">{{ form.password2.label }}</label>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+        <ul class="errorlist">
+            {% for error in form.password2.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+
+    <button class="btn btn-primary-custom" type="submit">{% trans "Sign Up" %}</button>
+</form>
+
+{% endblock %}

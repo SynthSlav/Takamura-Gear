@@ -99,10 +99,11 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="">Logout</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#logoutModal">Logout</a></li>
                                 {% else %}
-                                <li><a class="dropdown-item" href="">Register</a></li>
-                                <li><a class="dropdown-item" href="">Login</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -245,6 +246,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="logoutModalLabel">Sign Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to sign out?</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="{% url 'account_logout' %}" class="btn btn-danger">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     {% block corejs %}
     <!-- Bootstrap -->

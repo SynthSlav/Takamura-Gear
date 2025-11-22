@@ -15,9 +15,19 @@ def all_products(request):
         products = products.filter(category__name=category)
         current_category = Category.objects.get(name=category)
 
+    # Sort products
+    sort = request.GET.get("sort", "name")
+    if sort == "price_asc":
+        products = products.order_by("price")
+    elif sort == "price_desc":
+        products = products.order_by("-price")
+    elif sort == "name":
+        products = products.order_by("name")
+
     context = {
         "products": products,
         "current_category": current_category,
+        "current_sort": sort,
     }
     return render(request, "products/products.html", context)
 

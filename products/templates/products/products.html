@@ -26,19 +26,34 @@
                 <h5 class="mb-3">Categories</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="{% url 'products' %}" class="text-decoration-none text-dark">All Products</a>
+                        <a href="{% url 'products' %}"
+                            class="text-decoration-none {% if not current_category %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                            All Products
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="" class="text-decoration-none text-dark">Gloves</a>
+                        <a href="{% url 'products' %}?category=gloves"
+                            class="text-decoration-none {% if current_category.name == 'gloves' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                            Gloves
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="" class="text-decoration-none text-dark">Fight Gear</a>
+                        <a href="{% url 'products' %}?category=fight_gear"
+                            class="text-decoration-none {% if current_category.name == 'fight_gear' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                            Fight Gear
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="" class="text-decoration-none text-dark">Protective Equipment</a>
+                        <a href="{% url 'products' %}?category=protective_equipment"
+                            class="text-decoration-none {% if current_category.name == 'protective_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                            Protective Equipment
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="" class="text-decoration-none text-dark">Bags & Equipment</a>
+                        <a href="{% url 'products' %}?category=bags_equipment"
+                            class="text-decoration-none {% if current_category.name == 'bags_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                            Bags & Equipment
+                        </a>
                     </li>
                 </ul>
 
@@ -76,12 +91,19 @@
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <p class="mb-0 text-muted">{{ products|length }} Products</p>
-                    <select class="form-select form-select-sm sort-select">
-                        <option>Sort by: Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Name: A-Z</option>
-                    </select>
+                    <form method="GET" id="sort-form">
+                        {% if current_category %}
+                        <input type="hidden" name="category" value="{{ current_category.name }}">
+                        {% endif %}
+                        <select name="sort" class="form-select form-select-sm sort-select"
+                            onchange="this.form.submit()">
+                            <option value="name" {% if current_sort == "name" %}selected{% endif %}>Name: A-Z</option>
+                            <option value="price_asc" {% if current_sort == "price_asc" %}selected{% endif %}>Price: Low
+                                to High</option>
+                            <option value="price_desc" {% if current_sort == " price_desc" %}selected{% endif %}>Price:
+                                High to Low</option>
+                        </select>
+                    </form>
                 </div>
             </div>
             <!-- Product list -->

@@ -10,8 +10,13 @@
 <div class="container-fluid py-5">
     <div class="row">
         <div class="col-12 text-center mb-4">
+            {% if current_category %}
+            <h1>{{ current_category.friendly_name }}</h1>
+            <p class="text-muted">{{ products|length }} Products in {{ current_category.friendly_name }}</p>
+            {% else %}
             <h1>All Products</h1>
             <p class="text-muted">{{ products|length }} Products Available</p>
+            {% endif %}
         </div>
     </div>
     <div class="row">

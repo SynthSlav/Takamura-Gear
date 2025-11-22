@@ -95,7 +95,6 @@
                                 <li><a class="dropdown-item" href="">Product Management</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
-                                <li><a class="dropdown-item" href="">My Orders</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -165,16 +164,17 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Training Gloves</a>
+                        <a class="nav-link" href="{% url 'products' %}?category=gloves">Gloves</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Fight Gear</a>
+                        <a class="nav-link" href="{% url 'products' %}?category=fight_gear">Fight Gear</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Protective Equipment</a>
+                        <a class="nav-link" href="{% url 'products' %}?category=protective_equipment">Protective
+                            Equipment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Apparel</a>
+                        <a class="nav-link" href="{% url 'products' %}?category=bags_equipment">Bags & Equipment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="">Sale</a>

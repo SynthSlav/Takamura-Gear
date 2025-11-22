@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product, Category
 
 
 # Create your views here.
@@ -8,7 +8,17 @@ from .models import Product
 def all_products(request):
     """Show all products"""
     products = Product.objects.all()
-    context = {"products": products}
+
+    # Filter by category if provided
+    category = request.GET.get("category")
+    if category:
+        products = products.filter(category__name=category)
+        current_category = Category.objects.get(name=category)
+
+    context = {
+        "products": products,
+        "current_category": current_category,
+    }
     return render(request, "products/products.html", context)
 
 

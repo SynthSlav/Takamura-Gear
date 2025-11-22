@@ -7,6 +7,7 @@ from products.models import Product
 from cart.contexts import cart_contents
 import stripe
 from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 
 # Create your views here.
 
@@ -71,7 +72,23 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse("view_cart"))
-
+            # Save user info to profile if checkbox was checked
+            if request.POST.get("save_info"):
+                profile_data = {
+                    "default_full_name": order.full_name,
+                    "default_phone_number": order.phone_number,
+                    "default_street_address1": order.street_address1,
+                    "default_street_address2": order.street_address2,
+                    "default_town_or_city": order.town_or_city,
+                    "default_county": order.county,
+                    "default_postcode": order.postcode,
+                    "default_country": order.country,
+                }
+                user_profile_form = UserProfileForm(
+                    profile_data, instance=request.user.userprofile
+                )
+                if user_profile_form.is_valid():
+                    user_profile_form.save()
             return redirect(reverse("checkout_success", args=[order.order_number]))
         else:
             messages.error(

@@ -60,29 +60,35 @@
                 <hr>
 
                 <h5 class="mb-3">Price Range</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="price1">
-                    <label class="form-check-label" for="price1">
+                <div class="mb-2">
+                    <a href="{% url 'products' %}{% if current_category %}?category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% elif current_category %}&sort={{ current_sort }}{% endif %}"
+                        class="text-decoration-none {% if not current_price_range %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                        All Prices
+                    </a>
+                </div>
+                <div class="mb-2">
+                    <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                        class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         Under £30
-                    </label>
+                    </a>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="price2">
-                    <label class="form-check-label" for="price2">
+                <div class="mb-2">
+                    <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                        class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         £30 - £60
-                    </label>
+                    </a>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="price3">
-                    <label class="form-check-label" for="price3">
+                <div class="mb-2">
+                    <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                        class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         £60 - £100
-                    </label>
+                    </a>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="price4">
-                    <label class="form-check-label" for="price4">
+                <div class="mb-2">
+                    <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                        class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         Over £100
-                    </label>
+                    </a>
                 </div>
             </div>
         </div>
@@ -95,12 +101,15 @@
                         {% if current_category %}
                         <input type="hidden" name="category" value="{{ current_category.name }}">
                         {% endif %}
+                        {% if current_price_range %}
+                        <input type="hidden" name="price_range" value="{{ current_price_range }}">
+                        {% endif %}
                         <select name="sort" class="form-select form-select-sm sort-select"
                             onchange="this.form.submit()">
                             <option value="name" {% if current_sort == "name" %}selected{% endif %}>Name: A-Z</option>
                             <option value="price_asc" {% if current_sort == "price_asc" %}selected{% endif %}>Price: Low
                                 to High</option>
-                            <option value="price_desc" {% if current_sort == " price_desc" %}selected{% endif %}>Price:
+                            <option value="price_desc" {% if current_sort == "price_desc" %}selected{% endif %}>Price:
                                 High to Low</option>
                         </select>
                     </form>

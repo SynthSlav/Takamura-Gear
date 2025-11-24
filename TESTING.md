@@ -257,14 +257,21 @@ All CSS files were validated using the [W3C CSS Validation Service](https://jigs
 
 ---
 
-### JavaScript Validation (JSHint)
+### JavaScript Validation
 
-| File | Result | Notes |
-|------|--------|-------|
-| base.js | | |
-| cart.js | | |
-| product_detail.js | | |
-| stripe_elements.js | | |
+All JavaScript files were validated using [JSHint](https://jshint.com/) with no errors reported.
+
+**Files validated:**
+- static/js/base.js
+- static/js/cart.js  
+- static/js/product_detail.js
+- static/js/stripe_elements.js
+
+<details><summary>View JSHint validation result</summary>
+
+![JSHint validation](documentation/testing/js-validator.png)
+
+</details>
 
 ### Python Validation (CI Python Linter)
 

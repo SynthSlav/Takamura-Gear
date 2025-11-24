@@ -68,7 +68,7 @@
 
                 <!-- Search bar (desktop only) -->
                 <div class="col-lg-5 d-none d-lg-block">
-                    <form method="GET" action="" class="search-form">
+                    <form method="GET" action="{% url 'products' %}" class="search-form">
                         <div class="search-bar">
                             <input type="text" name="q" class="form-control"
                                 placeholder="Search for MMA gear, gloves, apparel...">
@@ -130,7 +130,7 @@
             <!-- Search bar (mobile only) -->
             <div class="row d-lg-none pb-2">
                 <div class="col-12">
-                    <form method="GET" action="" class="search-form">
+                    <form method="GET" action="{% url 'products' %}" class="search-form">
                         <div class="search-bar">
                             <input type="text" name="q" class="form-control" placeholder="Search products...">
                             <button type="submit" class="btn-search">

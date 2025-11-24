@@ -12,6 +12,7 @@ def all_products(request):
     """Show all products"""
     products = Product.objects.all()
     current_category = None
+    query = None
     # Filter by category if provided
     category = request.GET.get("category")
     if category:

@@ -10,7 +10,10 @@
 <div class="container-fluid py-5">
     <div class="row">
         <div class="col-12 text-center mb-4">
-            {% if current_category %}
+            {% if search_term %}
+            <h1>Search Results for "{{ search_term }}"</h1>
+            <p class="text-muted">{{ products|length }} Product{% if products|length != 1 %}s{% endif %} Found</p>
+            {% elif current_category %}
             <h1>{{ current_category.friendly_name }}</h1>
             <p class="text-muted">{{ products|length }} Products in {{ current_category.friendly_name }}</p>
             {% else %}
@@ -61,31 +64,31 @@
 
                 <h5 class="mb-3">Price Range</h5>
                 <div class="mb-2">
-                    <a href="{% url 'products' %}{% if current_category %}?category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% elif current_category %}&sort={{ current_sort }}{% endif %}"
+                    <a href="{% url 'products' %}{% if current_category %}?category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% elif current_category %}&{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
                         class="text-decoration-none {% if not current_price_range %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         All Prices
                     </a>
                 </div>
                 <div class="mb-2">
-                    <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                    <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
                         class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         Under £30
                     </a>
                 </div>
                 <div class="mb-2">
-                    <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                    <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
                         class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         £30 - £60
                     </a>
                 </div>
                 <div class="mb-2">
-                    <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                    <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
                         class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         £60 - £100
                     </a>
                 </div>
                 <div class="mb-2">
-                    <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                    <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
                         class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
                         Over £100
                     </a>

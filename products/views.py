@@ -1,5 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category
+from django.db.models import Q
+from django.contrib import messages
+from django.urls import reverse
 
 
 # Create your views here.
@@ -14,6 +17,16 @@ def all_products(request):
     if category:
         products = products.filter(category__name=category)
         current_category = Category.objects.get(name=category)
+
+    # Search functionality
+    if "q" in request.GET:
+        query = request.GET["q"]
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse("products"))
+
+        queries = Q(name__icontains=query) | Q(description__icontains=query)
+        products = products.filter(queries)
 
     # Filter by price range
     price_range = request.GET.get("price_range")
@@ -40,6 +53,7 @@ def all_products(request):
         "current_category": current_category,
         "current_sort": sort,
         "current_price_range": price_range,
+        "search_term": query,
     }
     return render(request, "products/products.html", context)
 

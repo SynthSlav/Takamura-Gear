@@ -104,6 +104,9 @@
                         {% if current_price_range %}
                         <input type="hidden" name="price_range" value="{{ current_price_range }}">
                         {% endif %}
+                        {% if search_term %}
+                        <input type="hidden" name="q" value="{{ search_term }}">
+                        {% endif %}
                         <select name="sort" class="form-select form-select-sm sort-select"
                             onchange="this.form.submit()">
                             <option value="name" {% if current_sort == "name" %}selected{% endif %}>Name: A-Z</option>

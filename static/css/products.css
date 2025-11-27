@@ -1,12 +1,25 @@
 .product-card-img {
     aspect-ratio: 1/1;
     object-fit: cover;
+    max-height: 250px;
 }
 
 .product-card-title {
     font-size: 0.85rem;
     min-height: 2.5rem;
 }
+
+
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 
 .sort-select {
     width: auto;
@@ -15,4 +28,35 @@
 /* Product detail styles */
 .quantity-input-group {
     max-width: 150px;
+}
+
+/* Sticky sidebar */
+.sticky-sidebar {
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+/* Accordion customization */
+.accordion-button {
+    background-color: #fff;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+.accordion-body {
+    padding: 1rem 0.5rem;
 }

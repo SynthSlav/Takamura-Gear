@@ -24,74 +24,106 @@
     </div>
     <div class="row">
         <!-- Sidebar Filter -->
+<!-- Sidebar Filter -->
         <div class="col-lg-3 col-md-4 mb-4">
-            <div class="border p-3">
-                <h5 class="mb-3">Categories</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2">
-                        <a href="{% url 'products' %}"
-                            class="text-decoration-none {% if not current_category %}fw-bold text-danger{% else %}text-dark{% endif %}">
-                            All Products
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% url 'products' %}?category=gloves"
-                            class="text-decoration-none {% if current_category.name == 'gloves' %}fw-bold text-danger{% else %}text-dark{% endif %}">
-                            Gloves
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% url 'products' %}?category=fight_gear"
-                            class="text-decoration-none {% if current_category.name == 'fight_gear' %}fw-bold text-danger{% else %}text-dark{% endif %}">
-                            Fight Gear
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% url 'products' %}?category=protective_equipment"
-                            class="text-decoration-none {% if current_category.name == 'protective_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
-                            Protective Equipment
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% url 'products' %}?category=bags_equipment"
-                            class="text-decoration-none {% if current_category.name == 'bags_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
-                            Bags & Equipment
-                        </a>
-                    </li>
-                </ul>
+            <div class="border p-3 sticky-sidebar">
+                <!-- Bootstrap Accordion -->
+                <div class="accordion" id="filterAccordion">
+                    
+                    <!-- Categories Accordion Item (Open by default) -->
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="headingCategories">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#collapseCategories" aria-expanded="true" 
+                                    aria-controls="collapseCategories">
+                                Categories
+                            </button>
+                        </h2>
+                        <div id="collapseCategories" class="accordion-collapse collapse show" 
+                             aria-labelledby="headingCategories" data-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="{% url 'products' %}"
+                                            class="text-decoration-none {% if not current_category %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            All Products
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="{% url 'products' %}?category=gloves"
+                                            class="text-decoration-none {% if current_category.name == 'gloves' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            Gloves
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="{% url 'products' %}?category=fight_gear"
+                                            class="text-decoration-none {% if current_category.name == 'fight_gear' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            Fight Gear
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="{% url 'products' %}?category=protective_equipment"
+                                            class="text-decoration-none {% if current_category.name == 'protective_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            Protective Equipment
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="{% url 'products' %}?category=bags_equipment"
+                                            class="text-decoration-none {% if current_category.name == 'bags_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            Bags & Equipment
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                <hr>
+                    <!-- Price Range Accordion Item (Closed by default) -->
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="headingPrice">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#collapsePrice" aria-expanded="false" 
+                                    aria-controls="collapsePrice">
+                                Price Range
+                            </button>
+                        </h2>
+                        <div id="collapsePrice" class="accordion-collapse collapse" 
+                             aria-labelledby="headingPrice" data-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                <div class="mb-2">
+                                    <a href="{% url 'products' %}{% if current_category %}?category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% elif current_category %}&sort={{ current_sort }}{% endif %}"
+                                        class="text-decoration-none {% if not current_price_range %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        All Prices
+                                    </a>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                                        class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        Under £30
+                                    </a>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                                        class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        £30 - £60
+                                    </a>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                                        class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        £60 - £100
+                                    </a>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
+                                        class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        Over £100
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <h5 class="mb-3">Price Range</h5>
-                <div class="mb-2">
-                    <a href="{% url 'products' %}{% if current_category %}?category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% elif current_category %}&{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                        class="text-decoration-none {% if not current_price_range %}text-danger fw-bold{% else %}text-dark{% endif %}">
-                        All Prices
-                    </a>
-                </div>
-                <div class="mb-2">
-                    <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                        class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}">
-                        Under £30
-                    </a>
-                </div>
-                <div class="mb-2">
-                    <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                        class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}">
-                        £30 - £60
-                    </a>
-                </div>
-                <div class="mb-2">
-                    <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                        class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
-                        £60 - £100
-                    </a>
-                </div>
-                <div class="mb-2">
-                    <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                        class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
-                        Over £100
-                    </a>
                 </div>
             </div>
         </div>
@@ -123,7 +155,7 @@
             <!-- Product list -->
             <div class="row g-4">
                 {% for product in products %}
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card border-0 h-100">
                         <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
                             {% if product.image_url %}

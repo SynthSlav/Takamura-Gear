@@ -8,6 +8,8 @@ from cart.contexts import cart_contents
 import stripe
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -148,6 +150,17 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     order = get_object_or_404(Order, order_number=order_number)
+    # Send confirmation email
+    cust_email = order.email
+    subject = render_to_string(
+        "checkout/confirmation_emails/confirmation_email_subject.txt", {"order": order}
+    )
+    body = render_to_string(
+        "checkout/confirmation_emails/confirmation_email_body.txt",
+        {"order": order, "contact_email": settings.DEFAULT_FROM_EMAIL},
+    )
+
+    send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [cust_email])
     messages.success(
         request,
         f"Thank you! Your order has been successfully placed. "

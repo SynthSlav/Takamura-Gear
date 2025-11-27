@@ -1,0 +1,32 @@
+Hello {{ order.full_name }}!
+
+Thank you for your order at Takamura Gear!
+
+Your order has been confirmed and will be shipped soon.
+
+ORDER DETAILS:
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+ITEMS ORDERED:
+{% for item in order.lineitems.all %}
+- {{ item.product.name }}{% if item.product_size %} (Size: {{ item.product_size }}){% endif %} x {{ item.quantity }} @ £{{ item.product.price }} each
+{% endfor %}
+
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
+
+DELIVERY ADDRESS:
+{{ order.full_name }}
+{{ order.street_address1 }}
+{% if order.street_address2 %}{{ order.street_address2 }}{% endif %}
+{{ order.town_or_city }}
+{% if order.county %}{{ order.county }}{% endif %}
+{{ order.postcode }}
+{{ order.country }}
+
+If you have any questions, feel free to contact us!
+
+Best regards,
+The Takamura Gear Team

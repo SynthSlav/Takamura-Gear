@@ -23,7 +23,8 @@ var style = {
 
 var card = elements.create('card', {
     style: style,
-    hidePostalCode: true
+    hidePostalCode: true,
+    disableLink: true
 });
 card.mount('#card-element');
 

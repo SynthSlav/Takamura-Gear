@@ -237,7 +237,7 @@ All HTML pages were validated using the [W3C Markup Validation Service](https://
 
 | Page | Result | Evidence |
 |------|--------|----------|
-| Home | Pass | <details><summary>View screenshot</summary>![Home page HTML validation](documentation/testing/hmtl-validator-home.png)</details> |
+| Home | Pass | <details><summary>View screenshot</summary>![Home page HTML validation](documentation/testing/html-validator-home.png)</details> |
 | Products (All) | Pass | <details><summary>View screenshot</summary>![Products page HTML validation](documentation/testing/html-validator-products.png)</details> |
 | Product Detail | Pass | <details><summary>View screenshot</summary>![Product detail HTML validation](documentation/testing/html-validator-product-detail.png)</details> |
 | Cart (Empty) | Pass | <details><summary>View screenshot</summary>![Empty cart HTML validation](documentation/testing/html-validator-emptycart.png)</details> |
@@ -245,6 +245,7 @@ All HTML pages were validated using the [W3C Markup Validation Service](https://
 | Checkout | Pass | <details><summary>View screenshot</summary>![Checkout HTML validation](documentation/testing/html-validator-checkoutform.png)</details> |
 | Checkout Success | Pass | <details><summary>View screenshot</summary>![Checkout success HTML validation](documentation/testing/html-validator-checkout-success.png)</details> |
 | Profile | Pass | <details><summary>View screenshot</summary>![Profile HTML validation](documentation/testing/html-validator-profile.png)</details> |
+| Product Management | Pass | <details><summary>View screenshot</summary>![Product Management HTML validation](documentation/testing/html-validator-product-management.png)</details> |
 
 ---
 
@@ -254,7 +255,7 @@ All CSS files were validated using the [W3C CSS Validation Service](https://jigs
 
 <details><summary>View CSS validation result</summary>
 
-![CSS Validation - All files pass](documentation/testing/css-valiodator-all.png)
+![CSS Validation - All files pass](documentation/testing/css-validator-all.png)
 
 </details>
 
@@ -266,6 +267,7 @@ All CSS files were validated using the [W3C CSS Validation Service](https://jigs
 - static/css/cart.css
 - static/css/checkout.css
 - static/css/profile.css
+- static/css/product_management
 
 ---
 
@@ -367,6 +369,10 @@ The site performs significantly better on subsequent page loads once the Heroku 
 
 ### Shopping Cart Page
 
+**Lighthouse Testing Note:**
+
+Lighthouse tests the empty cart state rather than the cart with items. I could not pinpoint the reason for this behaviour - it may be related to session data not persisting in Lighthouse's testing context. A comment on this matter would be appreciated.
+
 <details>
 <summary>Mobile</summary>
 
@@ -386,32 +392,32 @@ The site performs significantly better on subsequent page loads once the Heroku 
 <details>
 <summary>Mobile</summary>
 
-![Lighthouse Checkout Mobile](documentation/testing/lighthouse-checkout-mobile.png)
+### Checkout Page
 
-</details>
+**Lighthouse Testing Issue:**
 
-<details>
-<summary>Desktop</summary>
+Automated Lighthouse testing could not be performed on the checkout page. When attempting to test the checkout URL with items in the cart, Lighthouse reports that the page redirects to the products page, preventing the test from running. The exact cause of this behavior is unclear - it may be related to session handling, cookie management, or how Lighthouse handles authenticated/stateful pages. A comment on this issue as to why its unable to do it (i suspect session issues) would be appreciated.
 
-![Lighthouse Checkout Desktop](documentation/testing/lighthouse-checkout-desktop.png)
-
-</details>
 
 ### Profile Page
+
+**Lighthouse Testing Issue:**
+
+Automated Lighthouse testing could not be performed on the profile page due to authentication requirements. When attempting to test the profile URL (even while logged in via DevTools), Lighthouse reports that the page redirects to the login page. The exact cause is unclear and may be related to how Lighthouse handles Django session authentication. Just like checkout and cart, i would appreciate a comment on this issue and perhaps how to tackle it.
+
 
 <details>
 <summary>Mobile</summary>
 
-![Lighthouse Profile Mobile](documentation/testing/lighthouse-profile-mobile.png)
+![Lighthouse Login Mobile](documentation/testing/lighthouse-login-mobile.png)
 
 </details>
-
-<details>
 <summary>Desktop</summary>
 
-![Lighthouse Profile Desktop](documentation/testing/lighthouse-profile-desktop.png)
+![Lighthouse Login Desktop](documentation/testing/lighthouse-login-desktop.png)
 
 </details>
+
 
 ## Bugs & Fixes
 

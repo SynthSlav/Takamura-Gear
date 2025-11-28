@@ -6,8 +6,9 @@
 3. [Manual Feature Testing](#manual-feature-testing)
 4. [Code Validation](#code-validation)
 5. [Responsiveness Testing](#responsiveness-testing)
-6. [Bugs & Fixes](#bugs--fixes)
-7. [Stripe Testing](#stripe-testing)
+6. [Lighthouse Testing](#lighthouse-testing)
+7. [Bugs & Fixes](#bugs--fixes)
+8. [Stripe Testing](#stripe-testing)
 
 ---
 
@@ -302,6 +303,8 @@ All JavaScript files were validated using [JSHint](https://jshint.com/) with no 
 The site was tested across multiple device sizes using Chrome DevTools and physical devices. All pages displayed responsive design across all screen sizes, from mobile (320px) through to large desktop (1920px+). The Bootstrap grid system ensures content reflows appropriately, navigation collapses to a hamburger menu on smaller screens, product grids adjust column counts based on viewport width, and all interactive elements remain accessible and properly sized for touch input on mobile devices.
 
 ---
+
+
 
 ## Bugs & Fixes
 

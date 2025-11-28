@@ -304,7 +304,114 @@ The site was tested across multiple device sizes using Chrome DevTools and physi
 
 ---
 
+## Lighthouse Testing
 
+Lighthouse testing was performed on all major pages of the site to assess performance, accessibility, best practices, and SEO. Tests were conducted in Chrome DevTools using both mobile and desktop configurations.
+
+### Performance Notes
+
+Performance scores may vary due to:
+- **Heroku free tier cold starts** - Initial page loads can take 5-10 seconds when the dyno is sleeping
+- **External CDN resources** - Bootstrap, Font Awesome, and Google Fonts loading from external sources
+- **Image loading** - Product images hosted on external URLs
+
+The site performs significantly better on subsequent page loads once the Heroku dyno is active.
+
+### Home Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Home Mobile](documentation/testing/lighthouse-home-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Home Desktop](documentation/testing/lighthouse-home-desktop.png)
+
+</details>
+
+### Products Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Products Mobile](documentation/testing/lighthouse-products-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Products Desktop](documentation/testing/lighthouse-products-desktop.png)
+
+</details>
+
+### Product Detail Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Product Detail Mobile](documentation/testing/lighthouse-product-detail-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Product Detail Desktop](documentation/testing/lighthouse-product-detail-desktop.png)
+
+</details>
+
+### Shopping Cart Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Cart Mobile](documentation/testing/lighthouse-cart-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Cart Desktop](documentation/testing/lighthouse-cart-desktop.png)
+
+</details>
+
+### Checkout Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Checkout Mobile](documentation/testing/lighthouse-checkout-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Checkout Desktop](documentation/testing/lighthouse-checkout-desktop.png)
+
+</details>
+
+### Profile Page
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Profile Mobile](documentation/testing/lighthouse-profile-mobile.png)
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Profile Desktop](documentation/testing/lighthouse-profile-desktop.png)
+
+</details>
 
 ## Bugs & Fixes
 

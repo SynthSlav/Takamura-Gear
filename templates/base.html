@@ -76,7 +76,7 @@
                         <div class="search-bar">
                             <input type="text" name="q" class="form-control"
                                 placeholder="Search for MMA gear, gloves, apparel...">
-                            <button type="submit" class="btn-search">
+                            <button type="submit" class="btn-search" aria-label="Search products">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -138,7 +138,7 @@
                     <form method="GET" action="{% url 'products' %}" class="search-form">
                         <div class="search-bar">
                             <input type="text" name="q" class="form-control" placeholder="Search products...">
-                            <button type="submit" class="btn-search">
+                            <button type="submit" class="btn-search" aria-label="Search products">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -213,20 +213,25 @@
                     <p class="footer-text">Your premium destination for authentic MMA equipment and training gear.
                         Quality guaranteed.</p>
                     <div class="social-icons mt-3">
-                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://facebook.com" class="me-3" target="_blank" rel="noopener"
+                            aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" class="me-3" target="_blank" rel="noopener"
+                            aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="me-3" target="_blank" rel="noopener"
+                            aria-label="Visit us on X"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@ufc" target="_blank" rel="noopener"
+                            aria-label="Check our Youtube promotions"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <!-- Newsletter -->
                 <div class="col-md-6 mb-4">
                     <h5 class="footer-heading">Newsletter</h5>
                     <p class="footer-text">Subscribe for exclusive deals and updates!</p>
-                    <form class="newsletter-form">
+                    <form class="newsletter-form" method="POST" action="{% url 'home' %}">
+                        {% csrf_token %}
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your email">
-                            <button class="btn btn-subscribe" type="submit">
+                            <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                            <button class="btn btn-subscribe" type="submit" aria-label="Subscribe to newsletter">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>

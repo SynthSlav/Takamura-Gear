@@ -291,12 +291,12 @@ All JavaScript files were validated using [JSHint](https://jshint.com/) with no 
 
 | App | Files Checked | Result |
 |-----|---------------|--------|
-| home | views.py, urls.py | |
-| products | models.py, views.py, urls.py, admin.py | |
-| cart | views.py, urls.py, contexts.py | |
-| checkout | models.py, views.py, urls.py, forms.py, signals.py, admin.py | |
-| profiles | models.py, views.py, urls.py, forms.py, admin.py | |
-| takamura_gear | settings.py, urls.py | |
+| home | views.py, urls.py | Pass |
+| products | models.py, views.py, urls.py, admin.py | Pass |
+| cart | views.py, urls.py, contexts.py | Pass |
+| checkout | models.py, views.py, urls.py, forms.py, signals.py, admin.py | Pass |
+| profiles | models.py, views.py, urls.py, forms.py, admin.py | Pass |
+| takamura_gear | settings.py, urls.py | Pass |
 
 ---
 

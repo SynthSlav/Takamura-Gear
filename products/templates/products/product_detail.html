@@ -22,7 +22,7 @@
 
             {% if product.rating %}
             <p class="text-warning mb-3">
-                <i class="fas fa-star"></i> {{ product.rating }}
+                <i class="fas fa-star"></i> {{ product.rating|floatformat:1 }}
             </p>
             {% endif %}
 

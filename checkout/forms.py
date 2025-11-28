@@ -36,6 +36,7 @@ class OrderForm(forms.ModelForm):
         }
 
         self.fields["full_name"].widget.attrs["autofocus"] = True
+        self.fields["default_phone_number"].widget.attrs["type"] = "tel"
 
         for field in self.fields:
             if field != "country":

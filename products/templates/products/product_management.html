@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product_management.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="management-header">
+                <h1>Product Management</h1>
+                <p class="text-muted mb-0">Manage your store products</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <a href="{% url 'add_product' %}" class="btn btn-danger btn-lg">
+                <i class="fas fa-plus me-2"></i>Add New Product
+            </a>
+
+            <div class="btn-group" role="group">
+                <a href="{% url 'product_management' %}"
+                    class="btn btn-outline-secondary {% if not request.GET.category %}active{% endif %}">
+                    All Products
+                </a>
+                <a href="{% url 'product_management' %}?category=gloves"
+                    class="btn btn-outline-secondary {% if request.GET.category == 'gloves' %}active{% endif %}">
+                    Gloves
+                </a>
+                <a href="{% url 'product_management' %}?category=fight_gear"
+                    class="btn btn-outline-secondary {% if request.GET.category == 'fight_gear' %}active{% endif %}">
+                    Fight Gear
+                </a>
+                <a href="{% url 'product_management' %}?category=protective_equipment"
+                    class="btn btn-outline-secondary {% if request.GET.category == 'protective_equipment' %}active{% endif %}">
+                    Protective Equipment
+                </a>
+                <a href="{% url 'product_management' %}?category=bags_equipment"
+                    class="btn btn-outline-secondary {% if request.GET.category == 'bags_equipment' %}active{% endif %}">
+                    Bags & Equipment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="product-list-container">
+                <div class="p-3 bg-light border-bottom">
+                    <strong>Product count ({{ products|length }})</strong>
+                </div>
+                {% for product in products %}
+                <div class="product-list-item">
+                    <a href="{% url 'product_detail' product.id %}" class="product-name">
+                        {{ product.name }}
+                    </a>
+                    <span class="text-muted small ms-2">({{ product.sku }})</span>
+
+                    <div class="product-actions">
+                        <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-outline-secondary me-2">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal{{ product.id }}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Delete Confirmation Modal -->
+                <div class="modal fade" id="deleteModal{{ product.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Delete</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete <strong>{{ product.name }}</strong>?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -40,7 +40,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 text-center">
-                    <small><i class="fas fa-shipping-fast me-2"></i>FREE UK DELIVERY ON ORDERS OVER £50 | WORLDWIDE
+                    <small><i class="fas fa-shipping-fast me-2"></i>FREE UK DELIVERY ON ORDERS OVER £99 | WORLDWIDE
                         SHIPPING AVAILABLE</small>
                 </div>
             </div>
@@ -92,7 +92,8 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="">Product Management</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product_management' %}">Product
+                                        Management</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                                 <li>
@@ -158,8 +159,8 @@
                             All Products
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="allProductsDropdown">
-                            <li><a class="dropdown-item" href="">By Price</a></li>
-                            <li><a class="dropdown-item" href="">By Rating</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price_asc">By Price</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating">By Rating</a></li>
                             <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
                         </ul>
                     </li>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                {% if product %}
+                Edit Product
+                {% else %}
+                Add Product
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <form method="POST"
+                action="{% if product %}{% url 'edit_product' product.id %}{% else %}{% url 'add_product' %}{% endif %}"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <div class="mt-4">
+                    <a href="{% url 'product_management' %}" class="btn btn-outline-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger">
+                        {% if product %}Update Product{% else %}Add Product{% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

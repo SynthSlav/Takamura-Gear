@@ -32,7 +32,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "https://takamura-gear-7cf31519160d.herokuapp.com/",
     ".herokuapp.com",
     "127.0.0.1",
     "localhost",
@@ -168,6 +167,8 @@ AUTHENTICATION_BACKENDS = [
     # logging in via email/username combination or social accounts).
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+
+X_FRAME_OPTIONS = "ALLOWALL"
 
 # Allauth configuration
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"

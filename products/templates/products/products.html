@@ -24,7 +24,6 @@
     </div>
     <div class="row">
         <!-- Sidebar Filter -->
-        <!-- Sidebar Filter -->
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="border p-3 sticky-sidebar">
                 <!-- Bootstrap Accordion -->
@@ -45,31 +44,36 @@
                                 <ul class="list-unstyled">
                                     <li class="mb-2">
                                         <a href="{% url 'products' %}"
-                                            class="text-decoration-none {% if not current_category %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            class="text-decoration-none {% if not current_category %}fw-bold text-danger{% else %}text-dark{% endif %}"
+                                            aria-label="Show all products">
                                             All Products
                                         </a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{% url 'products' %}?category=gloves"
-                                            class="text-decoration-none {% if current_category.name == 'gloves' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            class="text-decoration-none {% if current_category.name == 'gloves' %}fw-bold text-danger{% else %}text-dark{% endif %}"
+                                            aria-label="Filter by gloves category">
                                             Gloves
                                         </a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{% url 'products' %}?category=fight_gear"
-                                            class="text-decoration-none {% if current_category.name == 'fight_gear' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            class="text-decoration-none {% if current_category.name == 'fight_gear' %}fw-bold text-danger{% else %}text-dark{% endif %}"
+                                            aria-label="Filter by fight gear category">
                                             Fight Gear
                                         </a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{% url 'products' %}?category=protective_equipment"
-                                            class="text-decoration-none {% if current_category.name == 'protective_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            class="text-decoration-none {% if current_category.name == 'protective_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}"
+                                            aria-label="Filter by protective equipment category">
                                             Protective Equipment
                                         </a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{% url 'products' %}?category=bags_equipment"
-                                            class="text-decoration-none {% if current_category.name == 'bags_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}">
+                                            class="text-decoration-none {% if current_category.name == 'bags_equipment' %}fw-bold text-danger{% else %}text-dark{% endif %}"
+                                            aria-label="Filter by bags and equipment category">
                                             Bags & Equipment
                                         </a>
                                     </li>
@@ -97,25 +101,29 @@
                                 </div>
                                 <div class="mb-2">
                                     <a href="?price_range=under_30{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                                        class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        class="text-decoration-none {% if current_price_range == 'under_30' %}text-danger fw-bold{% else %}text-dark{% endif %}"
+                                        aria-label="Filter products under £30">
                                         Under £30
                                     </a>
                                 </div>
                                 <div class="mb-2">
                                     <a href="?price_range=30_60{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                                        class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        class="text-decoration-none {% if current_price_range == '30_60' %}text-danger fw-bold{% else %}text-dark{% endif %}"
+                                        aria-label="Filter products between £30 and £60">
                                         £30 - £60
                                     </a>
                                 </div>
                                 <div class="mb-2">
                                     <a href="?price_range=60_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                                        class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        class="text-decoration-none {% if current_price_range == '60_100' %}text-danger fw-bold{% else %}text-dark{% endif %}"
+                                        aria-label="Filter products between £60 and £100">
                                         £60 - £100
                                     </a>
                                 </div>
                                 <div class="mb-2">
                                     <a href="?price_range=over_100{% if current_category %}&category={{ current_category.name }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}"
-                                        class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}">
+                                        class="text-decoration-none {% if current_price_range == 'over_100' %}text-danger fw-bold{% else %}text-dark{% endif %}"
+                                        aria-label="Filter products over £100">
                                         Over £100
                                     </a>
                                 </div>
@@ -140,8 +148,9 @@
                         {% if search_term %}
                         <input type="hidden" name="q" value="{{ search_term }}">
                         {% endif %}
-                        <select name="sort" class="form-select form-select-sm sort-select"
-                            onchange="this.form.submit()">
+                        <label for="sort-selector" class="visually-hidden">Sort products by</label>
+                        <select name="sort" class="form-select form-select-sm sort-select" onchange="this.form.submit()"
+                            aria-label="Sort products by">
                             <option value="name" {% if current_sort == "name" %}selected{% endif %}>Name: A-Z</option>
                             <option value="price_asc" {% if current_sort == "price_asc" %}selected{% endif %}>Price: Low
                                 to High</option>
@@ -156,7 +165,8 @@
                 {% for product in products %}
                 <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card border-0 h-100">
-                        <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
+                        <a href="{% url 'product_detail' product.id %}" class="text-decoration-none"
+                            aria-label="View {{ product.name }} details">
                             {% if product.image_url %}
                             <img src="{{ product.image_url }}" class="card-img-top product-card-img"
                                 alt="{{ product.name }}">
